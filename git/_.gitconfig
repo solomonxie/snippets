@@ -1,0 +1,10 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+#	name = Solomon Xie
+#	email = solomonxie@Solomons-Air.local
+[color]
+	ui = true
+[user]
+	email = solomonxiewise@gmail.com
+	name = solomonxie
