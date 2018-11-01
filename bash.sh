@@ -7,13 +7,17 @@
 # [ LEARN BASH TODO ]
 # =================================================
 
-# True if file exists
+# -f quiet on HTTP failure, -s slient, -S show error, -L reconnect if url redirects
+curl -fsSL "https://xx.xx" -o "xx.txt"
+
+# True if file exists & READABLE
 if [ -r /etc/os-release ];
 
-# True if the length of string is zero.
+# True if string's length is zero
 if [ -z "$CHANNEL" ];
 
-#
+# "${variable:-string}", return variable if variable is set and not null,
+# othewise return the string following '-'
 DRY_RUN=${DRY_RUN:-}
 
 # True if Number of arguments more than 0
@@ -22,7 +26,9 @@ if [ $# -gt 0 ];
 # 
 mirror="$2"; shift
 
-#
+# In the argument list, "shift" removes $1,
+# and makes $2 as a new $1
+# "shift 2" removes 2 args, and makes $3 as new $1
 shift $(( $# > 0 ? 1 : 0 ))
 
 #
