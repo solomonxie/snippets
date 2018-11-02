@@ -7,6 +7,35 @@
 # [ LEARN BASH TODO ]
 # =================================================
 
+#
+command -v "$@" > /dev/null 2>&1
+
+# 
+is_working(){ return 0 }
+
+# The format of "here-documents" is:
+# CMD [n]<<[-]word [REDIRECT]
+#   here-document
+# delimiter
+cat <<-EOF
+    ....
+EOF
+# Output "here-documents":
+cat <<-EOF >> filename.txt
+    ....
+EOF
+# Pipline of "here-documents":
+cat <<EOF | grep 'b' | tee b.txt
+    ....
+EOF
+
+# 
+! grep -Fxq "xenial" /etc/apt/sources.list
+
+
+# [ ADVANCED ]
+# =================================================
+
 # -f quiet on HTTP failure, -s slient, -S show error, -L reconnect if url redirects
 curl -fsSL "https://xx.xx" -o "xx.txt"
 
@@ -22,38 +51,13 @@ DRY_RUN=${DRY_RUN:-}
 
 # True if Number of arguments more than 0
 if [ $# -gt 0 ];
-
-# 
-mirror="$2"; shift
-
 # In the argument list, "shift" removes $1,
 # and makes $2 as a new $1
 # "shift 2" removes 2 args, and makes $3 as new $1
 shift $(( $# > 0 ? 1 : 0 ))
 
-#
-command -v "$@" > /dev/null 2>&1
-
-# 
-is_working(){ return 0 }
-
 # If file exists than output a variable
 lsb_dist="$(. /etc/os-release && echo "$ID")"
-
-#
-cat <<-EOF
-......
-EOF
-
-# 
-grep -Fxq "xenial" /etc/apt/sources.list
-
-
-# [ ADVANCED ]
-# =================================================
-
-
-
 
 # [ COLLECTIONS ]
 # =================================================
